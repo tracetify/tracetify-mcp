@@ -16,7 +16,7 @@ describe('tracetify-mcp server', () => {
     const client = await connected(vi.fn());
     const { tools } = await client.listTools();
     expect(tools.map((t) => t.name).sort()).toEqual(
-      ['get_trace', 'read_report', 'search_reports', 'start_trace']
+      ['get_trace', 'read_report', 'search_reports', 'start_trace', 'unlock_report']
     );
   });
 
@@ -68,10 +68,24 @@ describe('tracetify-mcp server', () => {
     const [a, b] = InMemoryTransport.createLinkedPair();
     await Promise.all([server.connect(a), client.connect(b)]);
     const { tools } = await client.listTools();
-    expect(tools).toHaveLength(4);
+    expect(tools).toHaveLength(5);
     const res = await client.callTool({ name: 'search_reports', arguments: { query: 'x' } });
     expect(res.isError).toBe(true);
     expect(res.content[0].text).toContain('tracetify.com/dashboard');
     expect(fetchImpl).not.toHaveBeenCalled();
+  });
+
+  it('unlock_report posts to the unlock endpoint', async () => {
+    const fetchImpl = vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({ charged: true, balance: 219, report: { host: 'weshop.ai' } }),
+    });
+    const client = await connected(fetchImpl);
+    const res = await client.callTool({ name: 'unlock_report', arguments: { slug: 'weshop-ai' } });
+    expect(fetchImpl).toHaveBeenCalledWith(
+      'https://api.test/api/mcp/v1/reports/weshop-ai/unlock',
+      expect.objectContaining({ method: 'POST' })
+    );
+    expect(res.content[0].text).toContain('"charged": true');
   });
 });

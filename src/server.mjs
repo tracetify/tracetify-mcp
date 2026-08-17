@@ -10,7 +10,7 @@ import { z } from 'zod';
 const DEFAULT_BASE = 'https://tracetify.com';
 
 export function createServer({ apiKey, baseUrl = DEFAULT_BASE, fetchImpl = fetch } = {}) {
-  const server = new McpServer({ name: 'tracetify', version: '0.1.0' });
+  const server = new McpServer({ name: 'tracetify', version: '0.2.0' });
 
   async function call(path, init = {}) {
     // 没配 key 时 server 照常启动、工具照常列出——目录站的健康检查和
@@ -74,6 +74,21 @@ export function createServer({ apiKey, baseUrl = DEFAULT_BASE, fetchImpl = fetch
         method: 'POST',
         body: JSON.stringify({ url, refresh: refresh === true }),
       }))
+  );
+
+  server.registerTool(
+    'unlock_report',
+    {
+      description:
+        "Permanently unlock a report's full timeline, evidence and SEO detail for this account. "
+        + "Costs credits — quote the exact price to the user first (it is in the report's "
+        + "timelineLocked.cost field from read_report) and call this ONLY after they explicitly "
+        + "agree to spend. Idempotent: unlocking an already-unlocked report never charges twice. "
+        + "Returns the full report. The verdict stays on the website — you are the analyst here.",
+      inputSchema: { slug: z.string() },
+    },
+    async ({ slug }) =>
+      text(await call(`/api/mcp/v1/reports/${encodeURIComponent(slug)}/unlock`, { method: 'POST' }))
   );
 
   server.registerTool(

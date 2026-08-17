@@ -36,6 +36,7 @@ Claude Code: `claude mcp add tracetify -e TRACETIFY_API_KEY=ttfy_... -- npx -y t
 | `read_report` | free | Read a full report (timeline & verdict follow your account's unlocks) |
 | `start_trace` | credits | Trace a new competitor from 12 sources (~60–90s); returns a cached report for free when a fresh one exists |
 | `get_trace` | free | Poll a running trace |
+| `unlock_report` | credits | Permanently unlock a report's full timeline, evidence & SEO detail (idempotent — never charges twice) |
 
 Fresh traces draw from your Tracetify credit balance — the same balance the
 website uses. No seats, no per-tool add-ons. Top up at
