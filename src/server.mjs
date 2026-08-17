@@ -13,6 +13,17 @@ export function createServer({ apiKey, baseUrl = DEFAULT_BASE, fetchImpl = fetch
   const server = new McpServer({ name: 'tracetify', version: '0.1.0' });
 
   async function call(path, init = {}) {
+    // 没配 key 时 server 照常启动、工具照常列出——目录站的健康检查和
+    // 用户的 tools/list 都不该因为缺环境变量而看到一个死进程；引导
+    // 放在真正调用的那一刻，出现在宿主的对话里，比 stderr 里一行
+    // 没人看的报错有用得多
+    if (!apiKey) {
+      throw new Error(
+        'TRACETIFY_API_KEY is not set. Create a free key at https://tracetify.com/dashboard '
+          + '(AI & MCP page) and add it to your MCP client config — reading the public report '
+          + 'library costs nothing once connected.'
+      );
+    }
     const res = await fetchImpl(`${baseUrl}${path}`, {
       ...init,
       headers: {

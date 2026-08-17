@@ -60,4 +60,18 @@ describe('tracetify-mcp server', () => {
     expect(res.isError).toBe(true);
     expect(res.content[0].text).toContain('A trace costs 10 credits');
   });
+
+  it('starts without an API key: tools list, calls return setup guidance', async () => {
+    const fetchImpl = vi.fn();
+    const server = createServer({ baseUrl: 'https://api.test', fetchImpl });
+    const client = new Client({ name: 'test', version: '0.0.0' });
+    const [a, b] = InMemoryTransport.createLinkedPair();
+    await Promise.all([server.connect(a), client.connect(b)]);
+    const { tools } = await client.listTools();
+    expect(tools).toHaveLength(4);
+    const res = await client.callTool({ name: 'search_reports', arguments: { query: 'x' } });
+    expect(res.isError).toBe(true);
+    expect(res.content[0].text).toContain('tracetify.com/dashboard');
+    expect(fetchImpl).not.toHaveBeenCalled();
+  });
 });
