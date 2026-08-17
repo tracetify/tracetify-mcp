@@ -1,0 +1,51 @@
+{
+  "name": "tracetify-mcp",
+  "version": "0.1.1",
+  "description": "MCP server for Tracetify — trace how any product actually grew, from inside Claude Code or Cursor.",
+  "keywords": [
+    "mcp",
+    "modelcontextprotocol",
+    "model-context-protocol",
+    "seo",
+    "competitive-analysis",
+    "competitor-research",
+    "growth",
+    "tracetify"
+  ],
+  "homepage": "https://tracetify.com",
+  "license": "MIT",
+  "author": "Tracetify",
+  "type": "module",
+  "bin": {
+    "tracetify-mcp": "bin/tracetify-mcp.mjs"
+  },
+  "files": [
+    "bin",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "vitest": "^3.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tracetify/tracetify-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tracetify/tracetify-mcp/issues"
+  }
+}
