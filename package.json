@@ -1,6 +1,7 @@
 {
   "name": "tracetify-mcp",
-  "version": "0.1.1",
+  "mcpName": "io.github.tracetify/tracetify-mcp",
+  "version": "0.1.2",
   "description": "MCP server for Tracetify — trace how any product actually grew, from inside Claude Code or Cursor.",
   "keywords": [
     "mcp",
