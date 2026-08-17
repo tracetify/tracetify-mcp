@@ -6,13 +6,13 @@
     "url": "https://github.com/tracetify/tracetify-mcp",
     "source": "github"
   },
-  "version": "0.1.2",
+  "version": "0.2.0",
   "websiteUrl": "https://tracetify.com",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "tracetify-mcp",
-      "version": "0.1.2",
+      "version": "0.2.0",
       "transport": {
         "type": "stdio"
       },
