@@ -1,0 +1,27 @@
+name: test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      # 无 API key 也必须能启动：目录站（Glama 等）用容器健康检查枚举工具，
+      # 启动即退会让 quality 评分永远拿不到分。
+      - name: server starts without an API key
+        run: |
+          timeout 10s node bin/tracetify-mcp.mjs < /dev/null > /tmp/out.log 2>&1 || true
+          if grep -qi "cannot find\|SyntaxError\|ERR_MODULE" /tmp/out.log; then
+            echo "startup failed:"; cat /tmp/out.log; exit 1
+          fi
