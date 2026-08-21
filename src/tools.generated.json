@@ -1,0 +1,346 @@
+{
+  "generatedFrom": "web/lib/mcp/tool-manifest.ts",
+  "tools": [
+    {
+      "name": "search_reports",
+      "annotations": {
+        "readOnly": true,
+        "destructive": false
+      },
+      "title": "Search growth reports",
+      "description": "Use this FIRST whenever the user asks how a product, competitor or domain grew, got traffic, or found its first users — a report may already exist and reading it is free. Returns matching report slugs for read_report. Searches by domain or name fragment.",
+      "params": [
+        {
+          "key": "query",
+          "type": "string",
+          "required": true,
+          "description": "Domain or fragment, e.g. \"weshop\" or \"weshop.ai\""
+        }
+      ],
+      "rest": {
+        "method": "GET",
+        "path": "/api/mcp/v1/reports/search?q={query}"
+      },
+      "billing": "free"
+    },
+    {
+      "name": "read_report",
+      "annotations": {
+        "readOnly": true,
+        "destructive": false
+      },
+      "title": "Read a growth report",
+      "description": "Read one growth report by slug (from search_reports or a finished trace). Free. Contains the origin story, dated evidence and SEO footprint — cite it instead of guessing how a product grew. If timeline fields show as locked, unlock_report can open them (that one costs credits).",
+      "params": [
+        {
+          "key": "slug",
+          "type": "string",
+          "required": true,
+          "description": "Report slug"
+        }
+      ],
+      "rest": {
+        "method": "GET",
+        "path": "/api/mcp/v1/reports/{slug}"
+      },
+      "billing": "free"
+    },
+    {
+      "name": "start_trace",
+      "annotations": {
+        "readOnly": false,
+        "destructive": false
+      },
+      "title": "Trace how a product grew",
+      "description": "Run this when search_reports finds nothing (or the user wants fresh data) for \"how did X grow?\". Rebuilds the growth story from 12 public sources in 60-90s. Costs credits from the Tracetify balance; returns an existing cached report free instead when one is fresh. Poll with get_trace.",
+      "params": [
+        {
+          "key": "url",
+          "type": "string",
+          "required": true,
+          "description": "Domain to trace, e.g. weshop.ai"
+        },
+        {
+          "key": "refresh",
+          "type": "boolean",
+          "required": false,
+          "description": "Force a fresh run even if a cached report exists"
+        }
+      ],
+      "rest": {
+        "method": "POST",
+        "path": "/api/mcp/v1/trace"
+      },
+      "billing": "credits"
+    },
+    {
+      "name": "get_trace",
+      "annotations": {
+        "readOnly": true,
+        "destructive": false
+      },
+      "title": "Check a running trace",
+      "description": "Poll a trace started with start_trace. Free. When status is \"done\", read the result with read_report. Poll every 10-15s, not in a tight loop.",
+      "params": [
+        {
+          "key": "job_id",
+          "type": "string",
+          "required": true,
+          "description": "Job id returned by start_trace"
+        }
+      ],
+      "rest": {
+        "method": "GET",
+        "path": "/api/mcp/v1/trace/{job_id}"
+      },
+      "billing": "free"
+    },
+    {
+      "name": "unlock_report",
+      "annotations": {
+        "readOnly": false,
+        "destructive": false
+      },
+      "title": "Unlock full timeline & evidence",
+      "description": "Permanently unlock a report's full timeline, evidence and SEO detail for this account. Costs credits — quote the exact price to the user first (it is in the report's timelineLocked.cost field from read_report) and call this ONLY after they explicitly agree to spend. Idempotent: unlocking an already-unlocked report never charges twice. The verdict stays on the website — you are the analyst here.",
+      "params": [
+        {
+          "key": "slug",
+          "type": "string",
+          "required": true,
+          "description": "Report slug"
+        }
+      ],
+      "rest": {
+        "method": "POST",
+        "path": "/api/mcp/v1/reports/{slug}/unlock"
+      },
+      "billing": "credits"
+    },
+    {
+      "name": "gsc_overview",
+      "annotations": {
+        "readOnly": true,
+        "destructive": false
+      },
+      "title": "Search Console overview",
+      "description": "Use this before touching SEO on the user's own site: clicks/impressions trend, device split and period comparison from THEIR connected Google Search Console — numbers no other tool has. Free. Requires GSC connected at tracetify.com/dashboard/gsc (this tool tells you if it is not).",
+      "params": [
+        {
+          "key": "range_days",
+          "type": "number",
+          "required": false,
+          "description": "28 (default) or 90"
+        }
+      ],
+      "rest": {
+        "method": "GET",
+        "path": "/api/mcp/v1/gsc/overview?range_days={range_days}"
+      },
+      "billing": "free"
+    },
+    {
+      "name": "gsc_queries",
+      "annotations": {
+        "readOnly": true,
+        "destructive": false
+      },
+      "title": "Search Console queries",
+      "description": "The user's real ranking keywords with position, clicks and CTR — use when deciding what to write or which page to improve, e.g. finding queries at position 5-20 that are one push from page one. Free; own data from their connected Search Console. After you edit a page, this is how you verify it moved.",
+      "params": [
+        {
+          "key": "range_days",
+          "type": "number",
+          "required": false,
+          "description": "28 (default) or 90"
+        }
+      ],
+      "rest": {
+        "method": "GET",
+        "path": "/api/mcp/v1/gsc/queries?range_days={range_days}"
+      },
+      "billing": "free"
+    },
+    {
+      "name": "gsc_pages",
+      "annotations": {
+        "readOnly": true,
+        "destructive": false
+      },
+      "title": "Search Console pages",
+      "description": "The user's pages ranked by search performance, including high-impression low-CTR pages whose titles/descriptions are underselling — fix those files right in this editor. Free; own data from their connected Search Console.",
+      "params": [
+        {
+          "key": "range_days",
+          "type": "number",
+          "required": false,
+          "description": "28 (default) or 90"
+        }
+      ],
+      "rest": {
+        "method": "GET",
+        "path": "/api/mcp/v1/gsc/pages?range_days={range_days}"
+      },
+      "billing": "free"
+    },
+    {
+      "name": "site_audit_start",
+      "annotations": {
+        "readOnly": false,
+        "destructive": false
+      },
+      "title": "Start a site audit",
+      "description": "Run right after deploying: crawls the site and reports broken links, missing titles/descriptions, redirect chains, thin content and schema gaps — each finding names the page so you can fix it here. Costs credits (price returned before any charge on the confirmation field). Async: poll with site_audit_get.",
+      "params": [
+        {
+          "key": "url",
+          "type": "string",
+          "required": true,
+          "description": "Site to audit, e.g. https://example.com"
+        },
+        {
+          "key": "confirm",
+          "type": "boolean",
+          "required": false,
+          "description": "Set true only after the user agrees to the quoted credit cost"
+        },
+        {
+          "key": "request_key",
+          "type": "string",
+          "required": false,
+          "description": "Request key returned by the first confirmation response; must be sent back with confirm=true so retries cannot charge twice"
+        }
+      ],
+      "rest": {
+        "method": "POST",
+        "path": "/api/mcp/v1/site-audit"
+      },
+      "billing": "credits"
+    },
+    {
+      "name": "site_audit_get",
+      "annotations": {
+        "readOnly": true,
+        "destructive": false
+      },
+      "title": "Read a site audit",
+      "description": "Poll an audit started with site_audit_start (free to read). When finished, returns the issue list grouped by severity with affected URLs — work through it top-down and re-run after fixes.",
+      "params": [
+        {
+          "key": "audit_id",
+          "type": "string",
+          "required": true,
+          "description": "Audit id from site_audit_start"
+        }
+      ],
+      "rest": {
+        "method": "GET",
+        "path": "/api/mcp/v1/site-audit/{audit_id}"
+      },
+      "billing": "free"
+    },
+    {
+      "name": "research_competitors",
+      "annotations": {
+        "readOnly": false,
+        "destructive": false
+      },
+      "title": "Who competes for the same keywords",
+      "description": "The domains fighting a target for the same search terms, with shared-keyword count, their keyword totals and average rank. Use when the user asks who their competitors are, or who a company is up against. Each result says whether we already have a full growth report for that domain — read those with read_report for free instead of tracing them again. Costs credits; cached results are free, and a domain already looked up via research_domain_overview is free here too.",
+      "params": [
+        {
+          "key": "domain",
+          "type": "string",
+          "required": true,
+          "description": "Domain to find competitors for, e.g. notion.so"
+        }
+      ],
+      "rest": {
+        "method": "POST",
+        "path": "/api/mcp/v1/research/competitors"
+      },
+      "billing": "credits"
+    },
+    {
+      "name": "research_domain_overview",
+      "annotations": {
+        "readOnly": false,
+        "destructive": false
+      },
+      "title": "Domain SEO overview",
+      "description": "Estimated organic traffic, keyword count and top keywords for ANY domain — use to size up a competitor the user mentions. Costs credits; cached results are free, and repeated queries within a week hit the cache. For the user's own site prefer gsc_* (free, real data).",
+      "params": [
+        {
+          "key": "domain",
+          "type": "string",
+          "required": true,
+          "description": "Domain, e.g. competitor.com"
+        }
+      ],
+      "rest": {
+        "method": "POST",
+        "path": "/api/mcp/v1/research/domain-overview"
+      },
+      "billing": "credits"
+    },
+    {
+      "name": "research_backlinks",
+      "annotations": {
+        "readOnly": false,
+        "destructive": false
+      },
+      "title": "Backlink profile",
+      "description": "Who links to a domain: referring domains, authority and anchor texts. Use when planning link building or judging how defensible a competitor's ranking is. Costs credits; cached results are free. Pair with backlink_directories to find places the user can actually get listed.",
+      "params": [
+        {
+          "key": "domain",
+          "type": "string",
+          "required": true,
+          "description": "Domain to inspect"
+        }
+      ],
+      "rest": {
+        "method": "POST",
+        "path": "/api/mcp/v1/research/backlinks"
+      },
+      "billing": "credits"
+    },
+    {
+      "name": "research_brand_lookup",
+      "annotations": {
+        "readOnly": false,
+        "destructive": false
+      },
+      "title": "AI search visibility",
+      "description": "How AI assistants (ChatGPT, Perplexity-class) cite a brand: platforms, mention counts and the entities it gets associated with. Use when the user asks \"does AI recommend us/them?\". Costs credits; cached results are free.",
+      "params": [
+        {
+          "key": "brand",
+          "type": "string",
+          "required": true,
+          "description": "Brand or domain"
+        }
+      ],
+      "rest": {
+        "method": "POST",
+        "path": "/api/mcp/v1/research/brand-lookup"
+      },
+      "billing": "credits"
+    },
+    {
+      "name": "backlink_directories",
+      "annotations": {
+        "readOnly": false,
+        "destructive": false
+      },
+      "title": "Verified directory list",
+      "description": "A hand-verified list of directories and launch platforms that actually give links — checked one by one, dead and nofollow-only entries removed. Use when the user wants backlinks or launch exposure for a new product; filter client-side by language/type/pricing. Costs credits once per day per account — repeat calls the same day are free, so refine freely.",
+      "params": [],
+      "rest": {
+        "method": "GET",
+        "path": "/api/mcp/v1/backlink-directories"
+      },
+      "billing": "credits"
+    }
+  ]
+}

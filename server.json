@@ -1,18 +1,18 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.tracetify/tracetify-mcp",
-  "description": "Trace how any product actually grew — 12-source growth reconstruction for competitor research.",
+  "description": "Find competitors, trace how they grew, watch what they ship — plus your Search Console.",
   "repository": {
     "url": "https://github.com/tracetify/tracetify-mcp",
     "source": "github"
   },
-  "version": "0.2.0",
+  "version": "0.4.0",
   "websiteUrl": "https://tracetify.com",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "tracetify-mcp",
-      "version": "0.2.0",
+      "version": "0.4.0",
       "transport": {
         "type": "stdio"
       },
@@ -23,6 +23,21 @@
           "format": "string",
           "isSecret": true,
           "name": "TRACETIFY_API_KEY"
+        }
+      ]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://tracetify.com/api/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Bearer <your Tracetify API key> — create one at https://tracetify.com/dashboard/ai",
+          "isRequired": true,
+          "isSecret": true,
+          "format": "string"
         }
       ]
     }

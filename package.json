@@ -1,7 +1,7 @@
 {
   "name": "tracetify-mcp",
   "mcpName": "io.github.tracetify/tracetify-mcp",
-  "version": "0.2.0",
+  "version": "0.4.0",
   "description": "MCP server for Tracetify — trace how any product actually grew, from inside Claude Code or Cursor.",
   "keywords": [
     "mcp",
@@ -22,7 +22,8 @@
   },
   "files": [
     "bin",
-    "src",
+    "src/server.mjs",
+    "src/tools.generated.json",
     "README.md",
     "LICENSE"
   ],
