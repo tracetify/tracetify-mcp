@@ -10,6 +10,10 @@ directory wave, the launch spike. Twelve sources per trace, every claim
 linked to the page it came from.
 
 Full setup guide and example questions: **[tracetify.com/mcp](https://tracetify.com/mcp)**
+Also on [Smithery](https://smithery.ai/servers/jsdasww593/tracetify):
+
+[![smithery badge](https://smithery.ai/badge/jsdasww593/tracetify)](https://smithery.ai/servers/jsdasww593/tracetify)
+
 
 ## Setup
 
