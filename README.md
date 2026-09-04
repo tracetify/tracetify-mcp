@@ -88,10 +88,10 @@ Reading existing reports never costs anything.
 | `gsc_pages` | free | Your pages by search performance, including high-impression low-CTR ones |
 | `site_audit_start` | 3 credits | Crawl a site for broken links, missing titles, redirect chains, thin content |
 | `site_audit_get` | free | Poll an audit and read the issue list grouped by severity |
-| `research_competitors` | 8 credits | Who fights a domain for the same keywords, flagging which ones already have a report |
-| `research_domain_overview` | 8 credits | Estimated organic traffic and top keywords for any domain |
-| `research_backlinks` | 8 credits | Referring domains, authority and anchor texts |
-| `research_brand_lookup` | 30 credits | How AI assistants cite a brand: platforms, mentions, associated entities |
+| `research_competitors` | 2 credits | Who fights a domain for the same keywords, flagging which ones already have a report |
+| `research_domain_overview` | 3 credits | Estimated organic traffic and top keywords for any domain |
+| `research_backlinks` | 3 credits | Referring domains, authority and anchor texts |
+| `research_brand_lookup` | 12 credits | How AI assistants cite a brand: platforms, mentions, associated entities |
 | `backlink_directories` | 8 credits | Hand-verified directories that actually give dofollow links (billed once per day) |
 
 Everything draws from your Tracetify credit balance — the same balance the
