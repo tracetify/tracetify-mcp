@@ -78,7 +78,7 @@ function zodParam(param) {
 }
 
 export function createServer({ apiKey, baseUrl = DEFAULT_BASE, fetchImpl = fetch } = {}) {
-  const server = new McpServer({ name: 'tracetify', version: '0.3.0' });
+  const server = new McpServer({ name: 'tracetify', version: '0.5.0' });
   const text = (data) => ({ content: [{ type: 'text', text: JSON.stringify(data, null, 2) }] });
 
   function mcpError(payload) {

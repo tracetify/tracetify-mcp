@@ -12,7 +12,7 @@ async function connected(fetchImpl) {
 }
 
 describe('tracetify-mcp server', () => {
-  it('exposes all 15 manifest tools', async () => {
+  it('exposes all 16 manifest tools', async () => {
     const client = await connected(vi.fn());
     const { tools } = await client.listTools();
     expect(tools.map((t) => t.name).sort()).toEqual(
@@ -27,6 +27,7 @@ describe('tracetify-mcp server', () => {
         'research_brand_lookup',
         'research_competitors',
         'research_domain_overview',
+        'research_keyword_volume',
         'search_reports',
         'site_audit_get',
         'site_audit_start',
@@ -187,7 +188,7 @@ describe('tracetify-mcp server', () => {
     const [a, b] = InMemoryTransport.createLinkedPair();
     await Promise.all([server.connect(a), client.connect(b)]);
     const { tools } = await client.listTools();
-    expect(tools).toHaveLength(15);
+    expect(tools).toHaveLength(16);
     const res = await client.callTool({ name: 'search_reports', arguments: { query: 'x' } });
     expect(res.isError).toBe(true);
     expect(res.content[0].text).toContain('TRACETIFY_API_KEY');

@@ -10,10 +10,6 @@ directory wave, the launch spike. Twelve sources per trace, every claim
 linked to the page it came from.
 
 Full setup guide and example questions: **[tracetify.com/mcp](https://tracetify.com/mcp)**
-Also on [Smithery](https://smithery.ai/servers/jsdasww593/tracetify):
-
-[![smithery badge](https://smithery.ai/badge/jsdasww593/tracetify)](https://smithery.ai/servers/jsdasww593/tracetify)
-
 
 ## Setup
 
@@ -90,6 +86,7 @@ Reading existing reports never costs anything.
 | `site_audit_get` | free | Poll an audit and read the issue list grouped by severity |
 | `research_competitors` | 2 credits | Who fights a domain for the same keywords, flagging which ones already have a report |
 | `research_domain_overview` | 3 credits | Estimated organic traffic and top keywords for any domain |
+| `research_keyword_volume` | 2 credits | Google Ads monthly search volume, CPC and 12-month trend for up to 10 keywords (per market or worldwide) |
 | `research_backlinks` | 3 credits | Referring domains, authority and anchor texts |
 | `research_brand_lookup` | 12 credits | How AI assistants cite a brand: platforms, mentions, associated entities |
 | `backlink_directories` | 8 credits | Hand-verified directories that actually give dofollow links (billed once per day) |

@@ -306,6 +306,34 @@
       "billing": "credits"
     },
     {
+      "name": "research_keyword_volume",
+      "annotations": {
+        "readOnly": false,
+        "destructive": false
+      },
+      "title": "Keyword search volume",
+      "description": "Google Ads (Keyword Planner) monthly search volume, CPC, competition and 12-month trend for up to 10 keywords in one call. Use when the user asks how often something is searched, or to size a keyword before writing a page. Omit location_code for worldwide volume, or pass a market code for one country. Costs credits; the same keyword set re-queried within a week is free.",
+      "params": [
+        {
+          "key": "keywords",
+          "type": "string",
+          "required": true,
+          "description": "Up to 10 search phrases, comma-separated, e.g. \"ai image generator, ai avatar maker\""
+        },
+        {
+          "key": "location_code",
+          "type": "number",
+          "required": false,
+          "description": "Market: 2840 US, 2826 UK, 2276 DE, 2250 FR, 2724 ES, 2392 JP, 2076 BR, 2356 IN. Omit for worldwide."
+        }
+      ],
+      "rest": {
+        "method": "POST",
+        "path": "/api/mcp/v1/research/keyword-volume"
+      },
+      "billing": "credits"
+    },
+    {
       "name": "research_brand_lookup",
       "annotations": {
         "readOnly": false,
