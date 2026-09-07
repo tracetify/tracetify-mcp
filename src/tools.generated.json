@@ -311,8 +311,8 @@
         "readOnly": false,
         "destructive": false
       },
-      "title": "Keyword search volume",
-      "description": "Google Ads (Keyword Planner) monthly search volume, CPC, competition and 12-month trend for up to 10 keywords in one call. Use when the user asks how often something is searched, or to size a keyword before writing a page. Omit location_code for worldwide volume, or pass a market code for one country. Costs credits; the same keyword set re-queried within a week is free.",
+      "title": "Keyword search volume & difficulty",
+      "description": "Google Ads (Keyword Planner) monthly search volume, CPC, competition, 12-month trend and keyword difficulty (0–100, DataForSEO Labs) for up to 10 keywords in one call. Use when the user asks how often something is searched or how hard it is to rank, or to size a keyword before writing a page. Omit location_code for worldwide volume (difficulty is then computed for the US), or pass a market code for one country. Costs credits; the same keyword set re-queried within a week is free.",
       "params": [
         {
           "key": "keywords",
