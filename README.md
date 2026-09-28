@@ -11,6 +11,10 @@ linked to the page it came from.
 
 Full setup guide and example questions: **[tracetify.com/mcp](https://tracetify.com/mcp)**
 
+## Free agent skills
+
+Start with [Competitor Research and GSC SEO Optimizer](https://tracetify.com/skills?utm_source=github&utm_medium=referral&utm_campaign=agent_skills&utm_content=mcp_readme) for sourced competitor briefs and prioritized Search Console work. These free, MIT-licensed workflows use public sources or your own exports and do not require a Tracetify account. [Browse the skill source](https://github.com/tracetify/skills). Connect this MCP server when you want additional Tracetify tools and data; authentication and applicable credit charges still apply.
+
 ## Setup
 
 Create an API key in the [dashboard](https://tracetify.com/dashboard/ai), then
