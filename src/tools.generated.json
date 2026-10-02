@@ -334,6 +334,28 @@
       "billing": "credits"
     },
     {
+      "name": "research_competitor_ads",
+      "annotations": {
+        "readOnly": false,
+        "destructive": false
+      },
+      "title": "Competitor ads (Meta + Google)",
+      "description": "The ads a domain is running right now on Facebook/Instagram (Meta Ad Library) and Google (Ads Transparency Center): headline, body copy, CTA, landing page URL, creative/video URL, platforms and start dates. Use when the user asks what a competitor is advertising, whether they run paid ads, how long an ad has been live, or wants hooks and angles to model. Costs credits; the same domain re-queried within a week is free. Each source reports separately — null means that source could not be checked, an empty list means it was checked and found nothing.",
+      "params": [
+        {
+          "key": "domain",
+          "type": "string",
+          "required": true,
+          "description": "Domain whose ads to pull, e.g. heavys.com"
+        }
+      ],
+      "rest": {
+        "method": "POST",
+        "path": "/api/mcp/v1/research/competitor-ads"
+      },
+      "billing": "credits"
+    },
+    {
       "name": "research_brand_lookup",
       "annotations": {
         "readOnly": false,

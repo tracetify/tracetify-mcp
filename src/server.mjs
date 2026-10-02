@@ -8,6 +8,7 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
 
 const DEFAULT_BASE = 'https://tracetify.com';
+const SERVER_VERSION = '0.6.0';
 const manifest = JSON.parse(
   readFileSync(new URL('./tools.generated.json', import.meta.url), 'utf8')
 );
@@ -78,7 +79,7 @@ function zodParam(param) {
 }
 
 export function createServer({ apiKey, baseUrl = DEFAULT_BASE, fetchImpl = fetch } = {}) {
-  const server = new McpServer({ name: 'tracetify', version: '0.5.0' });
+  const server = new McpServer({ name: 'tracetify', version: SERVER_VERSION });
   const text = (data) => ({ content: [{ type: 'text', text: JSON.stringify(data, null, 2) }] });
 
   function mcpError(payload) {
@@ -120,6 +121,8 @@ export function createServer({ apiKey, baseUrl = DEFAULT_BASE, fetchImpl = fetch
       headers: {
         Authorization: `Bearer ${apiKey}`,
         'Content-Type': 'application/json',
+        // 服务端调用日志用它区分 stdio 包与远程 HTTP 通道
+        'User-Agent': `tracetify-mcp/${SERVER_VERSION}`,
       },
     };
     if (body !== null) init.body = body;

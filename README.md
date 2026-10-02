@@ -67,6 +67,7 @@ placeholders:
 - *My page ranks #12 for "ai headshot generator" — what should I change to reach page one?*
 - *We just deployed — audit example.com and fix what you find.*
 - *Where can I get my new SaaS listed for real dofollow links?*
+- *What is competitor.com running on Meta and Google right now? Pull the hooks and landing pages.*
 
 If your agent ever reaches for the wrong tool, say `trace <domain>` and it will
 come straight here.
@@ -92,6 +93,7 @@ Reading existing reports never costs anything.
 | `research_domain_overview` | 3 credits | Estimated organic traffic and top keywords for any domain |
 | `research_keyword_volume` | 2 credits | Google Ads monthly search volume, CPC, 12-month trend and keyword difficulty (0–100) for up to 10 keywords (per market or worldwide; difficulty is US-based when worldwide) |
 | `research_backlinks` | 3 credits | Referring domains, authority and anchor texts |
+| `research_competitor_ads` | 3 credits | The ads a domain is running on Meta (Facebook/Instagram) and Google right now — copy, CTA, landing page, creative URL, platforms, start dates |
 | `research_brand_lookup` | 12 credits | How AI assistants cite a brand: platforms, mentions, associated entities |
 | `backlink_directories` | 8 credits | Hand-verified directories that actually give dofollow links (billed once per day) |
 
