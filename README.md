@@ -92,6 +92,7 @@ Reading existing reports never costs anything.
 | `research_competitors` | 2 credits | Who fights a domain for the same keywords, flagging which ones already have a report |
 | `research_domain_overview` | 3 credits | Estimated organic traffic and top keywords for any domain |
 | `research_keyword_volume` | 2 credits | Google Ads monthly search volume, CPC, 12-month trend and keyword difficulty (0–100) for up to 10 keywords (per market or worldwide; difficulty is US-based when worldwide) |
+| `research_serp_breakdown` | 3 credits | Who holds the Google top 10 for one keyword in one market: per position the domain, homepage vs inner page, domain rating (0–1000) and estimated monthly organic traffic — the weakest slot stands out |
 | `research_backlinks` | 3 credits | Referring domains, authority and anchor texts |
 | `research_competitor_ads` | 3 credits | The ads a domain is running on Meta (Facebook/Instagram) and Google right now — copy, CTA, landing page, creative URL, platforms, start dates |
 | `research_brand_lookup` | 12 credits | How AI assistants cite a brand: platforms, mentions, associated entities |

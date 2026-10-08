@@ -8,7 +8,7 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
 
 const DEFAULT_BASE = 'https://tracetify.com';
-const SERVER_VERSION = '0.6.0';
+const SERVER_VERSION = '0.7.0';
 const manifest = JSON.parse(
   readFileSync(new URL('./tools.generated.json', import.meta.url), 'utf8')
 );

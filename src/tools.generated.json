@@ -334,6 +334,34 @@
       "billing": "credits"
     },
     {
+      "name": "research_serp_breakdown",
+      "annotations": {
+        "readOnly": false,
+        "destructive": false
+      },
+      "title": "SERP top-10 breakdown",
+      "description": "Who holds the Google top 10 for one keyword in one market: per position the domain, URL, whether it is a homepage or an inner page, domain rating (0–1000) and estimated monthly organic traffic. Use when the user asks who ranks for a keyword, whether a keyword is winnable, or which slot is the weakest to go after. Pair with research_keyword_volume for volume and difficulty. Costs credits; the same keyword+market re-queried within a week is free.",
+      "params": [
+        {
+          "key": "keyword",
+          "type": "string",
+          "required": true,
+          "description": "One search phrase, e.g. \"ai headshot generator\""
+        },
+        {
+          "key": "location_code",
+          "type": "number",
+          "required": false,
+          "description": "Market: 2840 US (default), 2826 UK, 2276 DE, 2250 FR, 2724 ES, 2392 JP, 2076 BR, 2356 IN."
+        }
+      ],
+      "rest": {
+        "method": "POST",
+        "path": "/api/mcp/v1/research/serp-breakdown"
+      },
+      "billing": "credits"
+    },
+    {
       "name": "research_competitor_ads",
       "annotations": {
         "readOnly": false,
